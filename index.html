@@ -2,15 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>CSS Positioning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MyBlog</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- LEFT: Jump Menu (fixed, full height) -->
+  <!-- LEFT SIDEBAR -->
   <aside id="jump-menu">
     <h2>Jump to an Article</h2>
-    <nav>
+
+    <nav class="jump-links">
       <a href="#a1">Article 1</a>
       <a href="#a2">Article 2</a>
       <a href="#a3">Article 3</a>
@@ -24,55 +26,56 @@
     </nav>
   </aside>
 
-  <!-- TOP: Header (fixed, does NOT include sidebar space) -->
+  <!-- FIXED HEADER -->
   <header id="top-header">
     <div class="brand">MyBlog.com</div>
-    <div class="nav-buttons">
-      <a href="#" class="btn">Recent Articles</a>
-      <a href="#" class="btn">Services</a>
-      <a href="#" class="btn">Mission</a>
-      <a href="#" class="btn">About Us</a>
-    </div>
+
+    <nav class="nav-buttons">
+      <a class="btn" href="#">Recent Articles</a>
+      <a class="btn" href="#">Services</a>
+      <a class="btn" href="#">Mission</a>
+      <a class="btn" href="#">About Us</a>
+    </nav>
   </header>
 
-  <!-- MAIN content area -->
+  <!-- MAIN CONTENT -->
   <main id="page">
     <h1>Recent Journal Articles</h1>
 
     <section id="articles">
       <article class="card" id="a1">
         <h3>Article 1</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros magna, efficitur a facilisis id, venenatis in elit. Nulla dictum vel metus at auctor. Integer venenatis pretium mauris id ultrices. Duis sagittis ligula eget erat hendrerit, ut lobortis libero mollis.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eros magna, efficitur a facilisis id, venenatis in elit. Nulla dictum vel metus at auctor. Integer venenatis pretium mauris id ultrices.</p>
         <a href="#">Read more...</a>
       </article>
 
       <article class="card" id="a2">
         <h3>Article 2</h3>
-        <p>Sed sed neque eget justo venenatis rutrum vitae quis ante. Sed ut iaculis dui, eget commodo nisi. Etiam et arcu ipsum. Praesent porta eu nisi a malesuada. Nunc cursus facilisis ligula, in porttitor nisl pulvinar ultrices.</p>
+        <p>Sed sed neque eget justo venenatis rutrum vitae quis ante. Sed ut iaculis dui, eget commodo nisi. Etiam et arcu ipsum. Praesent porta eu nisi a malesuada.</p>
         <a href="#">Read more...</a>
       </article>
 
       <article class="card" id="a3">
         <h3>Article 3</h3>
-        <p>Vivamus lectus ante, venenatis sed placerat id, pretium a est. Nulla facilisi. Curabitur vestibulum malesuada lectus, nec gravida nibh blandit ultrices. Donec dictum luctus placerat.</p>
+        <p>Vivamus lectus ante, venenatis sed placerat id, pretium a est. Nulla facilisi. Curabitur vestibulum malesuada lectus, nec gravida nibh blandit ultrices.</p>
         <a href="#">Read more...</a>
       </article>
 
       <article class="card" id="a4">
         <h3>Article 4</h3>
-        <p>Proin mi ipsum, egestas in diam nec, volutpat scelerisque est. Proin quis ullamcorper lorem. Quisque fringilla non magna ac suscipit. Sed scelerisque, massa ut aliquam faucibus.</p>
+        <p>Proin mi ipsum, egestas in diam nec, volutpat scelerisque est. Proin quis ullamcorper lorem. Quisque fringilla non magna ac suscipit.</p>
         <a href="#">Read more...</a>
       </article>
 
       <article class="card" id="a5">
         <h3>Article 5</h3>
-        <p>Sed suscipit vestibulum felis ut aliquam. Pellentesque tincidunt justo non velit consectetur. Etiam malesuada massa et felis placerat tincidunt. Nam mollis cursus odio.</p>
+        <p>Sed suscipit vestibulum felis ut aliquam. Pellentesque tincidunt justo non velit consectetur. Etiam malesuada massa et felis placerat tincidunt.</p>
         <a href="#">Read more...</a>
       </article>
 
       <article class="card" id="a6">
         <h3>Article 6</h3>
-        <p>Phasellus nunc sapien, dignissim in magna id, egestas condimentum erat. Fusce ac consectetur velit, ac iaculis nisi. Pellentesque volutpat mi non arcu sodales.</p>
+        <p>Phasellus nunc sapien, dignissim in magna id, egestas condimentum erat. Fusce ac consectetur velit, ac iaculis nisi.</p>
         <a href="#">Read more...</a>
       </article>
 
@@ -102,7 +105,7 @@
     </section>
   </main>
 
-  <!-- Fixed bottom-right block -->
+  <!-- FIXED BOTTOM RIGHT -->
   <div id="thanks">Thank you for visiting!</div>
 
 </body>
