@@ -1,6 +1,19 @@
 /* ---------- Base ---------- */
 * { box-sizing: border-box; }
 
+:root{
+  /* ONE source of truth for sidebar width */
+  --sidebar-w: clamp(190px, 15vw, 260px);
+
+  /* total fixed header height (red bar + blue buttons row) */
+  --header-h: 155px;
+}
+
+html{
+  /* makes anchor jumps account for fixed header automatically */
+  scroll-padding-top: var(--header-h);
+}
+
 body {
   margin: 0;
   font-family: "Times New Roman", serif;
@@ -12,12 +25,12 @@ body {
   position: fixed;
   left: 0;
   top: 0;
-  width: 15%;              /* hint says jump menu can be % */
-  min-width: 190px;        /* keeps it usable on smaller screens */
-  height: 100vh;           /* full page height */
-  background: #d4a325;     /* gold-ish like screenshot */
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: #d4a325;
   padding: 18px 14px;
   border-right: 2px solid #000;
+  overflow-y: auto; /* helpful if zoom makes links taller */
 }
 
 #jump-menu h2 {
@@ -33,13 +46,15 @@ body {
   color: #0000ee;
 }
 
-/* ---------- Fixed header (doesn't scroll) ---------- */
+/* ---------- Fixed header ---------- */
 #top-header {
   position: fixed;
   top: 0;
-  left: 15%;               /* IMPORTANT: start after sidebar */
-  width: 85%;              /* rest of page */
-  min-width: calc(100% - 190px);
+
+  /* IMPORTANT: start after the *actual* sidebar width */
+  left: var(--sidebar-w);
+  width: calc(100% - var(--sidebar-w));
+
   z-index: 10;
 }
 
@@ -57,8 +72,7 @@ body {
 #top-header .nav-buttons {
   display: flex;
   justify-content: space-between;
-  background: #000;        /* black behind gaps */
-  padding: 0;
+  background: #000;
 }
 
 #top-header .btn {
@@ -69,22 +83,15 @@ body {
   background: #0017ff;
   font-size: 26px;
   padding: 16px 0;
-  border-left: 3px solid #000;  /* black separators */
+  border-left: 3px solid #000;
 }
 
-#top-header .btn:first-child {
-  border-left: none;
-}
+#top-header .btn:first-child { border-left: none; }
 
 /* ---------- Main content area ---------- */
 #page {
-  /* push content right of jump-menu */
-  margin-left: 15%;
-  min-width: calc(100% - 190px);
-
-  /* push content below fixed header (red + button row) */
-  padding-top: 155px;
-
+  margin-left: var(--sidebar-w);
+  padding-top: var(--header-h);
   padding-left: 25px;
   padding-right: 25px;
 }
@@ -96,19 +103,22 @@ body {
   margin: 30px 0 25px;
 }
 
-/* ---------- Articles layout (responsive reflow) ---------- */
+/* ---------- Articles layout ---------- */
 #articles {
   display: flex;
-  flex-wrap: wrap;            /* IMPORTANT: re-organize on resize */
+  flex-wrap: wrap;
   gap: 36px;
   justify-content: space-evenly;
   align-items: flex-start;
 }
 
-/* each article fixed width like hint */
+/* each article fixed width */
 .card {
   width: 300px;
   padding: 10px 8px;
+
+  /* anchor fix #2 (extra safety even if scroll-padding-top isn't supported) */
+  scroll-margin-top: var(--header-h);
 }
 
 .card h3 {
@@ -120,16 +130,13 @@ body {
 .card p {
   margin: 0 0 10px 0;
   line-height: 1.15;
-  text-align: left;
 }
 
-.card a {
-  color: #0000ee;
-}
+.card a { color: #0000ee; }
 
 /* ---------- Bottom-right "Thank you" block ---------- */
 #thanks {
-  position: fixed;            /* ALWAYS bottom-right */
+  position: fixed;
   right: 0;
   bottom: 0;
   background: #86c9f5;
